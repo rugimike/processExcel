@@ -11,7 +11,8 @@ namespace ConsoleApp1
         }
         public static void readCSV()
         {
-            using(var reader = new StreamReader(@"D:\readings.csv"))
+            //error in 4,7,
+            using(var reader = new StreamReader(@"D:\kilifi\4.csv"))
             {
                
                 while (!reader.EndOfStream)
@@ -30,7 +31,7 @@ namespace ConsoleApp1
                         var to = indvalues[4];
                         var networkCode = 1;
                         var query = "INSERT INTO short_code_inbox(messageid,org,type,date,sender,receiver,linkid,text,networkCode)"
-                                  +" VALUES('"+ messageid + "', 'kili', 'normal', '"+ date + "', '"+ from + "', '"+ to + "', '"+linkId + "', '"+text+"','"+ networkCode + "');";
+                                  +" VALUES('2122', 'kili', 'normal', '2022-11-29', '"+ from + "', '"+ to + "', '"+linkId + "', '"+text.Replace("'", "''") + "','"+ networkCode + "');";
                         Console.WriteLine(query);
                     }
                     catch (Exception e)
